@@ -1,0 +1,23 @@
+tasks:
+  default:
+    onboard_world: MessengerBotChatOnboardWorld
+    task_world: MessengerBotChatTaskWorld
+    timeout: 1800
+    agents_required: 1
+task_name: chatbot
+world_module: parlai.chat_service.tasks.chatbot.worlds
+overworld: MessengerOverworld
+max_workers: 3000
+opt: # Additional model opts go here
+  debug: True
+  models:
+    blenderbot2_400M:
+      model: projects.blenderbot2.agents.blenderbot2:BlenderBot2FidAgent
+      model_file: zoo:blenderbot2/blenderbot2_400M/model
+      interactive_mode: True
+      no_cuda: False
+      search_server: https://master-parl-ai-search-engine-scy6500.endpoint.ainize.ai
+      override:
+        search_server: https://master-parl-ai-search-engine-scy6500.endpoint.ainize.ai
+additional_args:
+  page_id: 1 # configure your own page
